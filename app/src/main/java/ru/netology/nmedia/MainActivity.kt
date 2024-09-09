@@ -23,9 +23,9 @@ class MainActivity : AppCompatActivity() {
             author.text = post.author
             published.text = post.published
             content.text = post.content
-            countLike.text = post.countLike.toString()
-            countShare.text = post.countShare.toString()
-            countViews.text = post.views.toString()
+            countLike.text = formatCount(post.countLike)
+            countShare.text = formatCount(post.countShare)
+            countViews.text = formatCount(post.views)
 
             favorite.setOnClickListener {
                 post.likeByMe = !post.likeByMe
