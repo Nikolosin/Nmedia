@@ -33,7 +33,7 @@
         app:layout_constraintStart_toEndOf="@+id/avatar"
         app:layout_constraintTop_toTopOf="@+id/avatar"
         app:layout_constraintVertical_chainStyle="packed"
-        tools:text="Нетология. Университет интернет профессий" />
+        tools:text="@string/author" />
 
     <TextView
         android:id="@+id/published"
