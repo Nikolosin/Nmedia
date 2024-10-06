@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         val adapter = PostAdapter(object : OnInteractionListener {
             override fun onEdit(post: Post) {
 
-                newPostLauncher.launch()
+                newPostLauncher.launch(post.content)
 
                viewModel.edit(post)
 
@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.fab.setOnClickListener() {
-            newPostLauncher.launch()
+            newPostLauncher.launch("")
         }
     }
 }

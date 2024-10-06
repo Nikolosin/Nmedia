@@ -1,7 +1,6 @@
 package ru.netology.nmedia
 
 import android.content.Intent
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -90,8 +89,6 @@ class PostViewHolder(
                 onInteractionListener.onShare(post)
             }
             image.setOnClickListener{
-                val intent = Intent(Intent.ACTION_VIEW)
-                intent.setData(Uri.parse("https://youtu.be/3HWIOkZFdQU?si=Py7BTpU8NlWt73o_"))
             }
         }
     }

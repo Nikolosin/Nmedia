@@ -10,6 +10,7 @@ class NewPostActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityNewPostBinding.inflate(layoutInflater)
+        binding.edit.setText(intent.getStringExtra("content"))
         setContentView(binding.root)
         binding.edit.requestFocus()
         binding.ok.setOnClickListener {
