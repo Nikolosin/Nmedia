@@ -14,7 +14,8 @@ class PostRepositoryInMemoryImpl : PostRepository {
             countLike = 10,
             countShare = 4,
             views = 10,
-            likeByMe = true
+            likeByMe = true,
+            url = "https://youtu.be/3HWIOkZFdQU?si=Py7BTpU8NlWt73o_"
         ),
         Post(
             id = nextId++,
@@ -41,7 +42,8 @@ class PostRepositoryInMemoryImpl : PostRepository {
             published = "21 сентября в 10:12",
             countLike = 5,
             countShare = 4,
-            views = 10
+            views = 10,
+            url = "https://youtu.be/3HWIOkZFdQU?si=Py7BTpU8NlWt73o_"
         ),
         Post(
             id = nextId++,

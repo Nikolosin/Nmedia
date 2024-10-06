@@ -1,8 +1,12 @@
 package ru.netology.nmedia
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.PopupMenu
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -49,6 +53,9 @@ class PostViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(post: Post) {
         binding.apply {
+            if (post.url!=""){
+                image.visibility= View.VISIBLE
+            }
             author.text = post.author
             published.text = post.published
             content.text = post.content
@@ -81,6 +88,10 @@ class PostViewHolder(
             }
             share.setOnClickListener {
                 onInteractionListener.onShare(post)
+            }
+            image.setOnClickListener{
+                val intent = Intent(Intent.ACTION_VIEW)
+                intent.setData(Uri.parse("https://youtu.be/3HWIOkZFdQU?si=Py7BTpU8NlWt73o_"))
             }
         }
     }

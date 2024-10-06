@@ -10,7 +10,8 @@ data class Post(
     val countLike: Int,
     val countShare: Int,
     val views: Int,
-    val likeByMe: Boolean = false
+    val likeByMe: Boolean = false,
+    val url: String = ""
 )
 
 fun formatCount(count: Int): String {
