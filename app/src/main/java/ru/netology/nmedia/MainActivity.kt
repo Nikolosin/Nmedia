@@ -1,6 +1,7 @@
 package ru.netology.nmedia
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -32,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
                 newPostLauncher.launch(post.content)
 
-               viewModel.edit(post)
+                viewModel.edit(post)
 
             }
 
@@ -56,6 +57,11 @@ class MainActivity : AppCompatActivity() {
                 startActivity(shareIntent)
                 viewModel.share(post.id)
             }
+
+            override fun onImage(post: Post) {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post.url))
+                startActivity(intent)
+            }
         })
 
         binding.list.adapter = adapter
@@ -70,46 +76,3 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-
-/*
-
-        viewModel.edited.observe(this) { post ->
-            if (post.id == 0) {
-                return@observe
-            }
-            binding.group.visibility = View.VISIBLE
-            binding.editcontent.text = post.content
-            with(binding.content) {
-                requestFocus()
-                setText(post.content)
-            }
-        }
-
-        binding.save.setOnClickListener {
-            with(binding.content) {
-                if (text.isNullOrBlank()) {
-                    Toast.makeText(
-                        this@MainActivity,
-                        context.getString(R.string.error_empty_content),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    return@setOnClickListener
-                }
-                viewModel.changeContent(text.toString())
-                viewModel.save()
-
-                setText("")
-                clearFocus()
-                binding.group.visibility = View.GONE
-                AndroidUtils.hideKeyboard(this)
-            }
-        }
-        binding.cancel.setOnClickListener {
-            binding.content.setText("")
-            binding.editcontent.text = ""
-            binding.group.visibility = View.GONE
-            viewModel.clean()
-            return@setOnClickListener
-        }
-    }
-}*/

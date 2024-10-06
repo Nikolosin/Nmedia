@@ -1,10 +1,12 @@
 package ru.netology.nmedia
 
 import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.PopupMenu
+import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -17,6 +19,7 @@ interface OnInteractionListener {
     fun onEdit(post: Post) {}
     fun onRemove(post: Post) {}
     fun onShare(post: Post)
+    fun onImage(post: Post)
 }
 
 class PostAdapter(
@@ -52,14 +55,14 @@ class PostViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(post: Post) {
         binding.apply {
-            if (post.url!=""){
-                image.visibility= View.VISIBLE
+            if (post.url != "") {
+                image.visibility = View.VISIBLE
             }
             author.text = post.author
             published.text = post.published
             content.text = post.content
-            like.isChecked=post.likeByMe
-            like.text=formatCount(post.countLike)
+            like.isChecked = post.likeByMe
+            like.text = formatCount(post.countLike)
             views.text = formatCount(post.views)
             share.text = formatCount(post.countShare)
             menu.setOnClickListener {
@@ -88,8 +91,8 @@ class PostViewHolder(
             share.setOnClickListener {
                 onInteractionListener.onShare(post)
             }
-            image.setOnClickListener{
-
+            image.setOnClickListener {
+                onInteractionListener.onImage(post)
             }
         }
     }
