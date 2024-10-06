@@ -89,6 +89,7 @@ class PostViewHolder(
                 onInteractionListener.onShare(post)
             }
             image.setOnClickListener{
+
             }
         }
     }

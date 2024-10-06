@@ -8,5 +8,5 @@
     <string name="remove" translatable="false">Удалить</string>
     <string name="post_text" translatable="false">Введите текст</string>
     <string name="error_empty_content" translatable="false">Content can\'t be empty</string>
-    <string name="chooser_share_post">qwertertyruytyrte</string>
+    <string name="chooser_share_post" translatable="false">share post</string>
 </resources>
