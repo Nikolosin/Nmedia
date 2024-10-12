@@ -23,6 +23,9 @@ class MainActivity : AppCompatActivity() {
         val viewModel: PostViewModel by viewModels()
 
         val newPostLauncher = registerForActivityResult(NewPostResultContract()) { result ->
+            if (result == null) {
+                viewModel.clean()
+            }
             result ?: return@registerForActivityResult
             viewModel.changeContent(result)
             viewModel.save()

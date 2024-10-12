@@ -57,7 +57,8 @@ class PostViewHolder(
         binding.apply {
             if (post.url != "") {
                 image.visibility = View.VISIBLE
-            }
+            } else image.visibility = View.GONE
+
             author.text = post.author
             published.text = post.published
             content.text = post.content
