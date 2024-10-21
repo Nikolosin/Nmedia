@@ -1,4 +1,4 @@
-package ru.netology.nmedia.activity
+package ru.netology.nmedia
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,13 +7,15 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import ru.netology.nmedia.NewPostFragment.Companion.textArg
 import ru.netology.nmedia.StringArg
 import ru.netology.nmedia.PostViewModel
 import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.FragmentPostBinding
 import ru.netology.nmedia.formatCount
 
-class NewPostFragment : Fragment() {
+class PostFragment : Fragment() {
 
     companion object {
         var Bundle.textArg: String? by StringArg
@@ -55,13 +57,19 @@ class NewPostFragment : Fragment() {
                         setOnMenuItemClickListener { item ->
                             when (item.itemId) {
                                 R.id.remove -> {
-                                    //onInteractionListener.onRemove(post)
-                                    //дорабатываю прямо сейчас
+                                    if (postId != null) {
+                                        viewModel.removeById(postId.toInt())
+                                        findNavController().navigateUp()
+                                    }
                                     true
                                 }
 
                                 R.id.edit -> {
-                                    //onInteractionListener.onEdit(post)
+                                    findNavController().navigate(
+                                        R.id.action_postFragment_to_newPostFragment,
+                                        Bundle().apply {
+                                            textArg = post.content
+                                        })
                                     true
                                 }
 
@@ -71,13 +79,14 @@ class NewPostFragment : Fragment() {
                     }.show()
                 }
                 like.setOnClickListener {
-                    //onInteractionListener.onLike(post)
+                    if (postId != null) {
+                        viewModel.like(postId.toInt())
+                    }
                 }
                 share.setOnClickListener {
-                   // onInteractionListener.onShare(post)
-                }
-                image.setOnClickListener {
-                    //onInteractionListener.onImage(post)
+                    if (postId != null) {
+                        viewModel.share(postId.toInt())
+                    }
                 }
             }
         }

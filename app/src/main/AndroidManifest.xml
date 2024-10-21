@@ -13,9 +13,6 @@
         android:theme="@style/Theme.NMedia"
         tools:targetApi="31">
         <activity
-            android:name=".PostFragment"
-            android:exported="false" />
-        <activity
             android:name=".activity.AppActivity"
             android:exported="true">
             <intent-filter>

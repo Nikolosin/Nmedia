@@ -68,24 +68,34 @@
         android:visibility="gone"
         />
 
-    <TextView
-        android:id="@+id/content"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/common_spacing"
-        app:layout_constraintBottom_toBottomOf="@id/barrierContent"
+    <ScrollView
+        android:id="@+id/sv"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:fillViewport="true"
+        android:scrollbars="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/image"
-        tools:layout_editor_absoluteY="196dp"
-        tools:text="@string/content" />
+        app:layout_constraintTop_toBottomOf="@id/barrier">
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/common_spacing"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image"
+            tools:layout_editor_absoluteY="196dp"
+            tools:text="@string/content" />
+    </ScrollView>
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrierContent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="content" />
+        app:constraint_referenced_ids="sv" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/like"
