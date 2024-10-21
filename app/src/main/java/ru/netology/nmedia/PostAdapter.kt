@@ -2,16 +2,21 @@ package ru.netology.nmedia
 
 import android.content.Intent
 import android.net.Uri
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import ru.netology.nmedia.NewPostFragment.Companion.textArg
 import ru.netology.nmedia.databinding.CardPostBinding
+import ru.netology.nmedia.databinding.FragmentFeedBinding
 
 
 interface OnInteractionListener {
@@ -20,11 +25,13 @@ interface OnInteractionListener {
     fun onRemove(post: Post) {}
     fun onShare(post: Post)
     fun onImage(post: Post)
+    fun onItem(post: Post)
 }
 
 class PostAdapter(
     private val onInteractionListener: OnInteractionListener
 ) : ListAdapter<Post, PostViewHolder>(PostDiffCallBack()) {
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
         val binding = CardPostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -65,7 +72,7 @@ class PostViewHolder(
             like.isChecked = post.likeByMe
             like.text = formatCount(post.countLike)
             views.text = formatCount(post.views)
-            share.text = formatCount(post.countShare)
+            share.text = post.id.toString()
             menu.setOnClickListener {
                 PopupMenu(it.context, it).apply {
                     inflate(R.menu.options_post)
@@ -94,6 +101,9 @@ class PostViewHolder(
             }
             image.setOnClickListener {
                 onInteractionListener.onImage(post)
+            }
+            content.setOnClickListener {
+                onInteractionListener.onItem(post)
             }
         }
     }

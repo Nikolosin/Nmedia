@@ -4,10 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-
-
-    tools:context=".FeedFragment">
+    android:layout_height="match_parent"
+    tools:context=".PostFragment">
 
     <ImageView
         android:id="@+id/avatar"
@@ -127,6 +125,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/like"
         app:icon="@drawable/baseline_remove_red_eye_24" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
