@@ -17,6 +17,8 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.netology.nmedia.NewPostFragment.Companion.textArg
 import ru.netology.nmedia.databinding.CardPostBinding
 import ru.netology.nmedia.databinding.FragmentFeedBinding
+import ru.netology.nmedia.dto.Post
+import ru.netology.nmedia.dto.formatCount
 
 
 interface OnInteractionListener {

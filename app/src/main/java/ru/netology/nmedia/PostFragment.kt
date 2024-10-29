@@ -8,12 +8,9 @@ import androidx.appcompat.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import ru.netology.nmedia.NewPostFragment.Companion.textArg
-import ru.netology.nmedia.StringArg
-import ru.netology.nmedia.PostViewModel
-import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.FragmentPostBinding
-import ru.netology.nmedia.formatCount
+import ru.netology.nmedia.dto.formatCount
+
 
 class PostFragment : Fragment() {
 
