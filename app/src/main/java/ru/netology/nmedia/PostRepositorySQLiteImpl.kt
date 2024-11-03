@@ -43,7 +43,12 @@ class PostRepositorySQLiteImpl(
     }
 
     override fun share(id: Int) {
-        TODO("Not yet implemented")
+        posts = posts.map {
+            if (it.id != id) it else it.copy(
+                countShare = it.countShare + 1
+            )
+        }
+        data.value = posts
     }
 
     override fun removeById(id: Int) {
